@@ -7,11 +7,11 @@ declare global {
 }
 
 const dbConfig: mysql.PoolOptions = {
-  host: process.env.DB_HOST || "127.0.0.1",
+  host: process.env.DB_HOST || "69.164.245.104",
   port: Number(process.env.DB_PORT) || 3306,
-  user: process.env.DB_USER || "root",
-  password: process.env.DB_PASSWORD || "",
-  database: process.env.DB_NAME || "vanta_services",
+  user: process.env.DB_USER || "luxuryuser",
+  password: process.env.DB_PASSWORD || "B@w5!L12ff!6&zleb",
+  database: process.env.DB_NAME || "luxury_ressler",
   waitForConnections: true,
   connectionLimit: 15,
   queueLimit: 0,

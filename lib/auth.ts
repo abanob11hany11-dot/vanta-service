@@ -1,4 +1,5 @@
 import { cookies } from "next/headers";
+import bcrypt from "bcryptjs";
 
 const JWT_SECRET = process.env.JWT_SECRET || "vanta-services-ultra-secure-jwt-secret-key-2026";
 const COOKIE_NAME = "vanta_session";
@@ -53,40 +54,18 @@ export async function verifyToken<T = any>(token: string): Promise<T | null> {
   }
 }
 
-// Password Hashing via native PBKDF2 (NIST compliant, zero-dependency)
 export async function hashPassword(password: string): Promise<string> {
-  const salt = crypto.getRandomValues(new Uint8Array(16));
-  const enc = new TextEncoder();
-  const keyMaterial = await crypto.subtle.importKey(
-    "raw",
-    enc.encode(password),
-    { name: "PBKDF2" },
-    false,
-    ["deriveBits"]
-  );
-
-  const derivedBits = await crypto.subtle.deriveBits(
-    {
-      name: "PBKDF2",
-      salt: salt,
-      iterations: 100000,
-      hash: "SHA-256",
-    },
-    keyMaterial,
-    256
-  );
-
-  const saltHex = Buffer.from(salt).toString("hex");
-  const hashHex = Buffer.from(derivedBits).toString("hex");
-  return `${saltHex}:${hashHex}`;
+  return bcrypt.hash(password, 10);
 }
 
 export async function verifyPassword(password: string, storedHash: string): Promise<boolean> {
   try {
-    // Admin demo fallback check
-    if (storedHash === "hash_admin" && password === "admin123") return true;
-    if (storedHash === "hash_client" && password === "client123") return true;
+    if (!storedHash || !password) return false;
+    if (storedHash.startsWith("$2a$") || storedHash.startsWith("$2b$") || storedHash.startsWith("$2y$")) {
+      return await bcrypt.compare(password, storedHash);
+    }
 
+    // PBKDF2 check fallback
     const [saltHex, hashHex] = storedHash.split(":");
     if (!saltHex || !hashHex) return false;
 

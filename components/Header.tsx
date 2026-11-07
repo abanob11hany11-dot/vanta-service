@@ -1,21 +1,38 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { useLanguage } from "./LanguageContext";
 import { Logo } from "./Logo";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { CurrencySwitcher } from "./CurrencySwitcher";
-import { Wallet, Menu, X, Shield, User, ArrowRight, ArrowLeft } from "lucide-react";
+import { Wallet, Menu, X, Shield, User, LogOut, ArrowRight, ArrowLeft } from "lucide-react";
 
 export function Header() {
   const { t, dir } = useLanguage();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [user] = useState<{ username: string; balance: number; role: string } | null>({
-    username: "Bebo",
-    balance: 45.0,
-    role: "admin",
-  });
+  const [user, setUser] = useState<{ username: string; balance: number; role: string } | null>(null);
+
+  useEffect(() => {
+    fetch("/api/auth/me")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.authenticated && data.user) {
+          setUser({
+            username: data.user.username,
+            balance: data.user.balance,
+            role: data.user.role,
+          });
+        }
+      })
+      .catch(() => {});
+  }, []);
+
+  const handleLogout = async () => {
+    await fetch("/api/auth/logout", { method: "POST" });
+    setUser(null);
+    window.location.href = "/";
+  };
 
   const Arrow = dir === "rtl" ? ArrowLeft : ArrowRight;
 
@@ -90,6 +107,13 @@ export function Header() {
                 <User className="w-3.5 h-3.5 text-amber-400" />
                 <span>{user.username}</span>
               </Link>
+              <button
+                onClick={handleLogout}
+                className="p-1.5 rounded-lg text-zinc-400 hover:text-rose-400 hover:bg-zinc-900 transition-colors"
+                title="تسجيل الخروج"
+              >
+                <LogOut className="w-3.5 h-3.5" />
+              </button>
             </div>
           ) : (
             <div className="flex items-center gap-2 ps-2 border-s border-zinc-800">

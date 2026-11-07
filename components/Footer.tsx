@@ -137,13 +137,9 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="mt-12 pt-6 border-t border-zinc-900 flex flex-col sm:flex-row items-center justify-between text-xs text-zinc-500 gap-4">
           <p>{t.footer.copyright}</p>
-          <div className="flex items-center gap-4">
-            <span className="text-amber-500/80">Vanta Services v1.0.0</span>
-            <span>•</span>
-            <span className="text-emerald-400 flex items-center gap-1">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              سيرفرات الخدمة تعمل بكفاءة 100%
-            </span>
+          <div className="flex items-center gap-2">
+            <span className="text-zinc-500">Developed</span>
+            <span className="text-amber-400 font-black tracking-wider">By Bebo</span>
           </div>
         </div>
       </div>

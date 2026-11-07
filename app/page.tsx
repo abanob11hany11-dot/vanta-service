@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { useLanguage } from "@/components/LanguageContext";
 import { OrderModal, ServiceItem } from "@/components/OrderModal";
@@ -26,8 +26,20 @@ export default function HomePage() {
   const { t, dir, formatPrice, lang } = useLanguage();
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedService, setSelectedService] = useState<ServiceItem | null>(null);
+  const [liveServices, setLiveServices] = useState<ServiceItem[] | null>(null);
 
   const Arrow = dir === "rtl" ? ArrowLeft : ArrowRight;
+
+  useEffect(() => {
+    fetch("/api/services")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success && data.services?.length) {
+          setLiveServices(data.services);
+        }
+      })
+      .catch(() => {});
+  }, []);
 
   const categories = [
     {
@@ -149,13 +161,14 @@ export default function HomePage() {
     },
   ];
 
+  const currentServicesList = liveServices || popularServices;
   const filteredServices = searchQuery.trim()
-    ? popularServices.filter(
+    ? currentServicesList.filter(
         (s) =>
           s.name_ar.toLowerCase().includes(searchQuery.toLowerCase()) ||
           s.name_en.toLowerCase().includes(searchQuery.toLowerCase())
       )
-    : popularServices;
+    : currentServicesList;
 
   return (
     <div className="space-y-24 pb-20">

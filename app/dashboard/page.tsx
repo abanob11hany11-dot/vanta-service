@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { useLanguage } from "@/components/LanguageContext";
 import { CurrencySwitcher } from "@/components/CurrencySwitcher";
@@ -20,12 +20,27 @@ import {
 export default function DashboardOverviewPage() {
   const { t, formatPrice, currency } = useLanguage();
   const [copiedId, setCopiedId] = useState<number | null>(null);
+  const [currentUser, setCurrentUser] = useState<{ username: string; balance: number } | null>(null);
+
+  useEffect(() => {
+    fetch("/api/auth/me")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.authenticated && data.user) {
+          setCurrentUser({
+            username: data.user.username,
+            balance: data.user.balance,
+          });
+        }
+      })
+      .catch(() => {});
+  }, []);
 
   const stats = {
-    balanceUsd: 45.0,
-    pendingOrders: 1,
-    completedOrders: 28,
-    totalSpentUsd: 412.5,
+    balanceUsd: currentUser ? currentUser.balance : 0.0,
+    pendingOrders: 0,
+    completedOrders: 5,
+    totalSpentUsd: 25.0,
   };
 
   const recentOrders = [
@@ -73,7 +88,7 @@ export default function DashboardOverviewPage() {
             لوحة تحكم العميل
           </span>
           <h1 className="text-3xl font-black text-white">
-            {t.dashboard.welcome}، Bebo 👋
+            {t.dashboard.welcome}، {currentUser?.username || "عزيزنا العميل"} 👋
           </h1>
         </div>
 

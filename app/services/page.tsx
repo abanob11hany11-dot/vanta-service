@@ -1,99 +1,40 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useLanguage } from "@/components/LanguageContext";
 import { OrderModal, ServiceItem } from "@/components/OrderModal";
-import { Search, Zap, Clock, Filter, ShieldCheck } from "lucide-react";
+import { Search, Zap, Clock, Filter, ShieldCheck, Loader2 } from "lucide-react";
 
 export default function ServicesPage() {
   const { t, formatPrice, lang } = useLanguage();
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedService, setSelectedService] = useState<ServiceItem | null>(null);
+  const [loading, setLoading] = useState(true);
 
-  const categories = [
+  const [categories, setCategories] = useState<{ id: string; name_ar: string; name_en: string }[]>([
     { id: "all", name_ar: "جميع الخدمات", name_en: "All Services" },
-    { id: "cat_frp", name_ar: "تخطي جوجل FRP", name_en: "FRP Bypass" },
-    { id: "cat_boxes", name_ar: "تفعيل البوكسات", name_en: "Box Activations" },
-    { id: "cat_imei", name_ar: "فحص السيريال", name_en: "IMEI Check" },
-    { id: "cat_rentals", name_ar: "تأجير الأدوات", name_en: "Tool Rentals" },
-    { id: "cat_games", name_ar: "شحن الألعاب", name_en: "Game Top-Up" },
-  ];
+  ]);
 
-  const allServices: (ServiceItem & { category_id: string })[] = [
-    {
-      id: "srv_frp_samsung",
-      category_id: "cat_frp",
-      name_ar: "تخطي حساب جوجل سامسونج فوري (جميع الموديلات)",
-      name_en: "Samsung FRP Instant Bypass (All Models)",
-      description_ar: "إزالة حساب جوجل FRP لجميع هواتف سامسونج حتى أحدث حماية وأندرويد 14/15 بدون فتح الجهاز",
-      notes_ar: "يعمل على أحدث حماية. أدخل السيريال وتأكد من كتابته بدقة",
-      price: 12.00,
-      price_egp: 600.00,
-      delivery_time: "1 - 10 دقائق",
-      required_fields: ["field_imei"],
-    },
-    {
-      id: "srv_unlocktool_3m",
-      category_id: "cat_boxes",
-      name_ar: "تفعيل أداة UnlockTool - 3 شهور",
-      name_en: "UnlockTool 3 Months Activation",
-      description_ar: "تفعيل الحساب الرسمي لأداة UnlockTool لمدة 3 أشهر مع جميع التحديثات",
-      notes_ar: "أدخل اسم المستخدم المسجل في موقع أداة UnlockTool",
-      price: 20.00,
-      price_egp: 1000.00,
-      delivery_time: "فوري (1 - 5 دقائق)",
-      required_fields: ["field_username"],
-    },
-    {
-      id: "srv_chimera_pro",
-      category_id: "cat_boxes",
-      name_ar: "تفعيل Chimera Tool PRO - سنة كاملة",
-      name_en: "Chimera Tool PRO 1 Year Activation",
-      description_ar: "الاشتراك السنوي الشامل لأداة كايميرا برو لجميع الماركات",
-      notes_ar: "يجب أن يكون الحساب مسجل ومفعل البريد في موقع Chimera",
-      price: 125.00,
-      price_egp: 6250.00,
-      delivery_time: "5 - 15 دقيقة",
-      required_fields: ["field_username"],
-    },
-    {
-      id: "srv_apple_gsx_check",
-      category_id: "cat_imei",
-      name_ar: "فحص شبكة وضمان أبل الرسمي (GSX Check)",
-      name_en: "Apple Official GSX & Carrier Check",
-      description_ar: "تقرير كامل ومفصل عن حالة الايفون: الشبكة المقفول عليها، حالة FMI، وتاريخ التفعيل",
-      notes_ar: "تحتاج فقط رقم الـ IMEI 15 رقم",
-      price: 1.50,
-      price_egp: 75.00,
-      delivery_time: "1 - 3 دقائق",
-      required_fields: ["field_imei"],
-    },
-    {
-      id: "srv_pubg_660_uc",
-      category_id: "cat_games",
-      name_ar: "شحن ببجي 660 شدة (UC) فوري",
-      name_en: "PUBG Mobile 660 UC Instant",
-      description_ar: "شحن فوري بالـ Player ID مباشرة داخل حساب اللعبة",
-      notes_ar: "تأكد من كتابة الـ ID واسم اللاعب بشكل صحيح لتجنب الخطأ",
-      price: 8.50,
-      price_egp: 425.00,
-      delivery_time: "فوري (1 دقيقة)",
-      required_fields: ["field_player_id"],
-    },
-    {
-      id: "srv_rental_unlocktool_2h",
-      category_id: "cat_rentals",
-      name_ar: "تأجير أداة UnlockTool لمدة ساعتين",
-      name_en: "UnlockTool 2 Hours Remote Rental",
-      description_ar: "استخدام كامل لأداة UnlockTool عبر UltraViewer لمدة ساعتين لإنهاء أجهزتك",
-      notes_ar: "شغّل برنامج UltraViewer وأرسل بيانات الدخول في الطلب",
-      price: 2.00,
-      price_egp: 100.00,
-      delivery_time: "فوري (خلال دقائق)",
-      required_fields: ["field_ultraviewer"],
-    },
-  ];
+  const [allServices, setAllServices] = useState<(ServiceItem & { category_id: string })[]>([]);
+
+  useEffect(() => {
+    fetch("/api/services")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success && data.services?.length) {
+          setAllServices(data.services);
+          if (data.categories?.length) {
+            setCategories([
+              { id: "all", name_ar: "جميع الخدمات", name_en: "All Services" },
+              ...data.categories,
+            ]);
+          }
+        }
+      })
+      .catch(() => {})
+      .finally(() => setLoading(false));
+  }, []);
 
   const filtered = allServices.filter((s) => {
     const matchesCat = selectedCategory === "all" || s.category_id === selectedCategory;

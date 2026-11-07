@@ -26,11 +26,23 @@ export default function LoginPage() {
     setLoading(true);
     setError(null);
 
-    // Simulated login verification
-    setTimeout(() => {
+    try {
+      const res = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ identifier, password }),
+      });
+      const data = await res.json();
+      if (!res.ok || !data.success) {
+        setError(data.error || "فشل تسجيل الدخول، تأكد من البيانات");
+        setLoading(false);
+        return;
+      }
+      window.location.href = "/dashboard";
+    } catch {
+      setError("تعذر الاتصال بالسيرفر، يرجى المحاولة لاحقاً");
       setLoading(false);
-      router.push("/dashboard");
-    }, 800);
+    }
   };
 
   return (
