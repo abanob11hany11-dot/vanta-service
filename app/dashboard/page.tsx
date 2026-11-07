@@ -20,7 +20,12 @@ import {
 export default function DashboardOverviewPage() {
   const { t, formatPrice, currency } = useLanguage();
   const [copiedId, setCopiedId] = useState<number | null>(null);
-  const [currentUser, setCurrentUser] = useState<{ username: string; balance: number } | null>(null);
+  const [currentUser, setCurrentUser] = useState<{
+    username: string;
+    email: string;
+    balance: number;
+    role: string;
+  } | null>(null);
 
   useEffect(() => {
     fetch("/api/auth/me")
@@ -29,7 +34,9 @@ export default function DashboardOverviewPage() {
         if (data.authenticated && data.user) {
           setCurrentUser({
             username: data.user.username,
+            email: data.user.email,
             balance: data.user.balance,
+            role: data.user.role,
           });
         }
       })
@@ -107,6 +114,32 @@ export default function DashboardOverviewPage() {
             <Wallet className="w-3.5 h-3.5" />
             <span>شحن الرصيد</span>
           </Link>
+        </div>
+      </div>
+
+      {/* Profile & Currency Preference Section */}
+      <div className="p-6 rounded-2xl bg-zinc-950 border border-amber-500/25 flex flex-col md:flex-row md:items-center justify-between gap-6 shadow-xl">
+        <div className="flex items-center gap-4">
+          <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-amber-500 to-yellow-600 flex items-center justify-center text-zinc-950 font-black text-lg shadow-md shrink-0">
+            {currentUser?.username?.charAt(0).toUpperCase() || "U"}
+          </div>
+          <div>
+            <div className="flex items-center gap-2">
+              <h3 className="text-base font-bold text-white">{currentUser?.username || "حساب العميل"}</h3>
+              <span className="px-2.5 py-0.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-[10px] font-bold">
+                {currentUser?.role === "admin" ? "مدير النظام (Owner)" : "حساب معتمد (Reseller)"}
+              </span>
+            </div>
+            <p className="text-xs text-zinc-400 mt-1 font-mono">{currentUser?.email || "البريد الإلكتروني مسجل"}</p>
+          </div>
+        </div>
+
+        <div className="flex flex-col sm:flex-row sm:items-center gap-3 bg-zinc-900/80 border border-zinc-800 p-3.5 rounded-2xl">
+          <div className="text-xs">
+            <span className="text-zinc-200 font-bold block">عملة عرض الأسعار المفضلة:</span>
+            <span className="text-zinc-500 text-[11px]">الافتراضية المعتمدة هي الدولار ($ USD)</span>
+          </div>
+          <CurrencySwitcher />
         </div>
       </div>
 

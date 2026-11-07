@@ -5,7 +5,6 @@ import Link from "next/link";
 import { useLanguage } from "./LanguageContext";
 import { Logo } from "./Logo";
 import { LanguageSwitcher } from "./LanguageSwitcher";
-import { CurrencySwitcher } from "./CurrencySwitcher";
 import { Wallet, Menu, X, Shield, User, LogOut, ArrowRight, ArrowLeft } from "lucide-react";
 
 export function Header() {
@@ -75,7 +74,6 @@ export function Header() {
 
         {/* Right Action Bar */}
         <div className="hidden lg:flex items-center gap-3">
-          <CurrencySwitcher />
           <LanguageSwitcher />
 
           {user ? (
@@ -136,8 +134,7 @@ export function Header() {
       {/* Mobile drawer */}
       {mobileMenuOpen && (
         <div className="lg:hidden border-t border-zinc-800 bg-zinc-950/95 backdrop-blur-2xl px-4 py-6 space-y-4 animate-in slide-in-from-top-4 duration-200">
-          <div className="flex items-center justify-between pb-3 border-b border-zinc-800">
-            <CurrencySwitcher />
+          <div className="flex items-center justify-end pb-3 border-b border-zinc-800">
             {user && (
               <div className="text-xs font-bold text-amber-400 flex items-center gap-1">
                 <Wallet className="w-3.5 h-3.5" />
