@@ -47,7 +47,7 @@ export async function POST(req: Request) {
       id: String(user.id),
       email: user.email,
       username: user.display_name || user.email.split("@")[0],
-      role: user.role === "OWNER" ? "admin" : "user",
+      role: (user.role === "OWNER" || user.role === "ADMIN" || user.role === "admin") ? "admin" : "user",
       balance: parseFloat(user.credits || "0"),
       currency: "USD",
     };

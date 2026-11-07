@@ -43,45 +43,32 @@ export function Header() {
         <Logo size="md" />
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
+        <nav className="hidden md:flex items-center gap-7 text-sm font-semibold">
           <Link
             href="/"
-            className="text-zinc-300 hover:text-amber-400 transition-colors"
+            className="text-zinc-200 hover:text-amber-400 transition-colors"
           >
             {t.nav.home}
           </Link>
           <Link
             href="/services"
-            className="text-zinc-300 hover:text-amber-400 transition-colors"
+            className="text-zinc-200 hover:text-amber-400 transition-colors"
           >
             {t.nav.services}
           </Link>
           <Link
-            href="/dashboard"
-            className="text-zinc-300 hover:text-amber-400 transition-colors"
+            href="/about"
+            className="text-zinc-200 hover:text-amber-400 transition-colors"
           >
-            {t.nav.dashboard}
-          </Link>
-          <Link
-            href="/dashboard/orders"
-            className="text-zinc-300 hover:text-amber-400 transition-colors"
-          >
-            {t.nav.orders}
-          </Link>
-          <Link
-            href="/dashboard/top-up"
-            className="text-amber-400 font-bold hover:text-amber-300 transition-colors flex items-center gap-1"
-          >
-            <Wallet className="w-3.5 h-3.5" />
-            <span>{t.nav.topUp}</span>
+            حول
           </Link>
           {user?.role === "admin" && (
             <Link
               href="/admin"
-              className="px-2.5 py-1 rounded-lg bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-bold hover:bg-amber-500/20 transition-all flex items-center gap-1"
+              className="px-2.5 py-1 rounded-lg bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-bold hover:bg-amber-500/20 transition-all flex items-center gap-1.5"
             >
               <Shield className="w-3.5 h-3.5 text-amber-400" />
-              <span>{t.nav.admin}</span>
+              <span>لوحة الإدارة</span>
             </Link>
           )}
         </nav>
@@ -175,25 +162,11 @@ export function Header() {
               {t.nav.services}
             </Link>
             <Link
-              href="/dashboard"
+              href="/about"
               onClick={() => setMobileMenuOpen(false)}
               className="px-3 py-2 rounded-lg text-zinc-200 hover:bg-zinc-900 hover:text-amber-300"
             >
-              {t.nav.dashboard}
-            </Link>
-            <Link
-              href="/dashboard/orders"
-              onClick={() => setMobileMenuOpen(false)}
-              className="px-3 py-2 rounded-lg text-zinc-200 hover:bg-zinc-900 hover:text-amber-300"
-            >
-              {t.nav.orders}
-            </Link>
-            <Link
-              href="/dashboard/top-up"
-              onClick={() => setMobileMenuOpen(false)}
-              className="px-3 py-2 rounded-lg text-amber-400 font-bold bg-amber-500/10 border border-amber-500/30"
-            >
-              {t.nav.topUp}
+              حول
             </Link>
             {user?.role === "admin" && (
               <Link
@@ -201,7 +174,7 @@ export function Header() {
                 onClick={() => setMobileMenuOpen(false)}
                 className="px-3 py-2 rounded-lg text-amber-300 bg-zinc-900 font-bold"
               >
-                {t.nav.admin}
+                لوحة الإدارة
               </Link>
             )}
           </div>

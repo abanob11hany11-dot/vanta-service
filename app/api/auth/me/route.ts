@@ -26,7 +26,7 @@ export async function GET() {
         id: String(liveUser.id),
         email: liveUser.email,
         username: liveUser.display_name || session.username,
-        role: liveUser.role === "OWNER" ? "admin" : "user",
+        role: (liveUser.role === "OWNER" || liveUser.role === "ADMIN" || liveUser.role === "admin") ? "admin" : "user",
         balance: parseFloat(liveUser.credits || "0"),
         currency: session.currency || "USD",
       },
