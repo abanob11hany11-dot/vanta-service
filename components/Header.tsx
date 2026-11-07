@@ -110,7 +110,7 @@ export function Header() {
               </Link>
               <Link
                 href="/register"
-                className="px-4 py-1.5 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-500 text-zinc-950 text-xs font-black shadow-[0_0_15px_rgba(212,175,55,0.3)] hover:brightness-110 transition-all"
+                className="px-4 py-1.5 rounded-xl bg-gradient-to-r from-[#C5A059] to-[#9E7D3B] text-zinc-950 text-xs font-bold shadow-sm hover:brightness-105 transition-all"
               >
                 {t.nav.register}
               </Link>

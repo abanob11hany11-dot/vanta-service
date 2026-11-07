@@ -44,8 +44,8 @@ type Section =
   | "overview"
   | "categories"
   | "services"
-  | "dhru-catalog"
-  | "dhru-sync"
+  | "server-catalog"
+  | "server-sync"
   | "fields"
   | "users"
   | "orders"
@@ -206,8 +206,8 @@ export default function AdminDashboardPage() {
     { id: "overview", label: "الرئيسية والمؤشرات", icon: LayoutDashboard },
     { id: "categories", label: "الأقسام والتصنيفات", icon: Layers, badge: realCategories.length },
     { id: "services", label: "الخدمات والأسعار", icon: Zap, badge: realServices.length },
-    { id: "dhru-catalog", label: "كتالوج سيرفر DHRU", icon: Globe },
-    { id: "dhru-sync", label: "مركز المزامنة DHRU", icon: RefreshCw },
+    { id: "server-catalog", label: "كتالوج السيرفر الخارجي", icon: Globe },
+    { id: "server-sync", label: "مركز المزامنة السحابية", icon: RefreshCw },
     { id: "fields", label: "الحقول الديناميكية", icon: FormInput },
     { id: "users", label: "المستخدمين والأرصدة", icon: Users },
     { id: "orders", label: "متابعة الطلبات", icon: ShoppingBag, badge: orders.filter((o) => o.status === "pending").length },
@@ -382,13 +382,13 @@ export default function AdminDashboardPage() {
                   </button>
 
                   <button
-                    onClick={() => setActiveSection("dhru-sync")}
+                    onClick={() => setActiveSection("server-sync")}
                     className="p-5 rounded-2xl bg-zinc-950 border border-zinc-800 hover:border-amber-400/60 transition-all text-start group"
                   >
                     <div className="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400 mb-3 group-hover:scale-105 transition-transform">
                       <RefreshCw className="w-5 h-5" />
                     </div>
-                    <div className="text-sm font-bold text-white">مزامنة سيرفر DHRU</div>
+                    <div className="text-sm font-bold text-white">مزامنة السيرفر السحابي</div>
                     <div className="text-xs text-zinc-400 mt-1">تحديث الأسعار وحالات الطلبات الخارجية</div>
                   </button>
 
@@ -416,7 +416,7 @@ export default function AdminDashboardPage() {
                   </div>
                   <button
                     onClick={() => showNotification("ميزة إضافة قسم جديد جاهزة")}
-                    className="px-4 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-500 text-zinc-950 text-xs font-black flex items-center gap-1.5"
+                    className="px-4 py-2 rounded-xl bg-gradient-to-r from-[#C5A059] to-[#9E7D3B] text-zinc-950 text-xs font-bold flex items-center gap-1.5 shadow-sm"
                   >
                     <Plus className="w-4 h-4" />
                     <span>إضافة قسم جديد</span>
@@ -465,7 +465,7 @@ export default function AdminDashboardPage() {
                   </div>
                   <button
                     onClick={() => showNotification("ميزة إضافة خدمة جديدة جاهزة")}
-                    className="px-4 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-500 text-zinc-950 text-xs font-black flex items-center gap-1.5"
+                    className="px-4 py-2 rounded-xl bg-gradient-to-r from-[#C5A059] to-[#9E7D3B] text-zinc-950 text-xs font-bold flex items-center gap-1.5 shadow-sm"
                   >
                     <Plus className="w-4 h-4" />
                     <span>إضافة خدمة جديدة</span>
@@ -514,22 +514,22 @@ export default function AdminDashboardPage() {
               </div>
             )}
 
-            {/* 4 & 5. DHRU CATALOG & SYNC */}
-            {(activeSection === "dhru-catalog" || activeSection === "dhru-sync") && (
+            {/* 4 & 5. SERVER CATALOG & SYNC */}
+            {(activeSection === "server-catalog" || activeSection === "server-sync") && (
               <div className="space-y-6">
                 <div className="p-6 rounded-2xl bg-zinc-950 border border-amber-500/30 flex flex-col md:flex-row md:items-center justify-between gap-4">
                   <div>
                     <h3 className="text-base font-bold text-white flex items-center gap-2">
                       <Globe className="w-5 h-5 text-amber-400" />
-                      <span>اتصال سيرفر DHRU Fusion العالمي</span>
+                      <span>اتصال السيرفر السحابي المباشر</span>
                     </h3>
                     <p className="text-xs text-zinc-400 mt-1">
                       حالة الربط: <strong className="text-emerald-400">متصل (Online)</strong> • الرصيد المتاح بالسيرفر الخارجي: <strong className="text-amber-300">$1,450.00</strong>
                     </p>
                   </div>
                   <button
-                    onClick={() => showNotification("تم إطلاق المزامنة مع DHRU بنجاح!")}
-                    className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-500 text-zinc-950 font-black text-xs flex items-center gap-2 shadow-lg"
+                    onClick={() => showNotification("تم إطلاق المزامنة مع السيرفر الخارجي بنجاح!")}
+                    className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#C5A059] to-[#9E7D3B] text-zinc-950 font-bold text-xs flex items-center gap-2 shadow-md"
                   >
                     <RefreshCw className="w-4 h-4" />
                     <span>مزامنة الأسعار والطلبات الآن</span>
@@ -837,7 +837,7 @@ export default function AdminDashboardPage() {
 
                   <button
                     type="submit"
-                    className="py-3 px-8 rounded-xl bg-gradient-to-r from-amber-500 via-amber-400 to-yellow-500 text-zinc-950 font-black text-xs shadow-lg hover:brightness-110 transition-all"
+                    className="py-3 px-8 rounded-xl bg-gradient-to-r from-[#C5A059] to-[#9E7D3B] text-zinc-950 font-bold text-xs shadow-md hover:brightness-105 transition-all"
                   >
                     حفظ التغييرات في قاعدة البيانات
                   </button>
@@ -881,7 +881,7 @@ export default function AdminDashboardPage() {
                   setOrderModal({ open: false, order: null, code: "" });
                   showNotification("تم إكمال الطلب بنجاح وإرسال الكود للعميل!");
                 }}
-                className="flex-1 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-500 text-zinc-950 font-black text-xs"
+                className="flex-1 py-2.5 rounded-xl bg-gradient-to-r from-[#C5A059] to-[#9E7D3B] text-zinc-950 font-bold text-xs"
               >
                 تأكيد وإرسال النتيجة
               </button>

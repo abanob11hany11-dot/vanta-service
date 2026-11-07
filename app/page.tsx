@@ -189,7 +189,7 @@ export default function HomePage() {
           <div className="space-y-4 max-w-4xl mx-auto">
             <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[1.15] text-white">
               {t.hero.title}{" "}
-              <span className="block mt-2 bg-gradient-to-r from-amber-200 via-amber-400 to-yellow-500 bg-clip-text text-transparent drop-shadow-[0_2px_15px_rgba(212,175,55,0.3)]">
+              <span className="block mt-2 bg-gradient-to-r from-[#EDE0C8] via-[#C5A059] to-[#9E7D3B] bg-clip-text text-transparent">
                 {t.hero.highlight}
               </span>
             </h1>
@@ -200,8 +200,8 @@ export default function HomePage() {
 
           {/* Search Bar */}
           <div className="max-w-2xl mx-auto relative group">
-            <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-amber-500 to-yellow-500 opacity-20 group-hover:opacity-40 blur transition duration-300" />
-            <div className="relative flex items-center rounded-2xl bg-zinc-950 border border-amber-500/40 p-2 shadow-2xl">
+            <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-[#C5A059] to-[#9E7D3B] opacity-20 group-hover:opacity-30 blur transition duration-300" />
+            <div className="relative flex items-center rounded-2xl bg-zinc-950 border border-[#C5A059]/40 p-2 shadow-2xl">
               <Search className="w-5 h-5 text-amber-400 ms-3 shrink-0" />
               <input
                 type="text"
@@ -212,7 +212,7 @@ export default function HomePage() {
               />
               <button
                 type="button"
-                className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-500 text-zinc-950 text-xs font-black shadow-md hover:brightness-110 transition-all shrink-0"
+                className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#C5A059] to-[#9E7D3B] text-zinc-950 text-xs font-black shadow-md hover:brightness-105 transition-all shrink-0"
               >
                 بحث
               </button>
@@ -223,14 +223,14 @@ export default function HomePage() {
           <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
             <Link
               href="/services"
-              className="px-7 py-3 rounded-xl bg-gradient-to-r from-amber-500 via-amber-400 to-yellow-500 text-zinc-950 font-black text-sm shadow-[0_0_30px_rgba(212,175,55,0.35)] hover:brightness-110 transition-all flex items-center gap-2"
+              className="px-7 py-3 rounded-xl bg-gradient-to-r from-[#C5A059] to-[#9E7D3B] text-zinc-950 font-black text-sm shadow-[0_4px_20px_rgba(197,160,89,0.2)] hover:brightness-105 transition-all flex items-center gap-2"
             >
               <span>{t.hero.ctaServices}</span>
               <Arrow className="w-4 h-4" />
             </Link>
             <Link
               href="/dashboard/top-up"
-              className="px-7 py-3 rounded-xl bg-zinc-900 border border-amber-500/30 hover:border-amber-400 text-amber-300 font-bold text-sm hover:bg-zinc-800 transition-all shadow-[0_0_15px_rgba(212,175,55,0.15)]"
+              className="px-7 py-3 rounded-xl bg-zinc-900 border border-[#C5A059]/30 hover:border-[#C5A059] text-amber-300 font-bold text-sm hover:bg-zinc-800 transition-all shadow-sm"
             >
               {t.hero.ctaTopUp}
             </Link>
@@ -247,8 +247,8 @@ export default function HomePage() {
               <div className="text-xs text-zinc-400 mt-1">{t.hero.statsSuccess}</div>
             </div>
             <div className="p-4 rounded-2xl bg-zinc-900/60 border border-amber-500/20 backdrop-blur-sm">
-              <div className="text-2xl font-black text-amber-300">DHRU 2.0</div>
-              <div className="text-xs text-zinc-400 mt-1">بروتوكول ربط فوري</div>
+              <div className="text-2xl font-black text-amber-300">Instant API</div>
+              <div className="text-xs text-zinc-400 mt-1">سيرفرات معالجة فورية مؤتمتة</div>
             </div>
             <div className="p-4 rounded-2xl bg-zinc-900/60 border border-amber-500/20 backdrop-blur-sm">
               <div className="text-2xl font-black text-amber-300">24 / 7</div>
@@ -364,7 +364,7 @@ export default function HomePage() {
                   </div>
                   <button
                     onClick={() => setSelectedService(service)}
-                    className="px-4 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-500 text-zinc-950 text-xs font-black shadow-md hover:brightness-110 transition-all flex items-center gap-1.5"
+                    className="px-4 py-2 rounded-xl bg-gradient-to-r from-[#C5A059] to-[#9E7D3B] text-zinc-950 text-xs font-bold shadow-md hover:brightness-105 transition-all flex items-center gap-1.5"
                   >
                     <Zap className="w-3.5 h-3.5" />
                     <span>{t.popularSection.orderBtn}</span>
@@ -449,7 +449,7 @@ export default function HomePage() {
                 </ul>
                 <Link
                   href="/dashboard/top-up"
-                  className="block text-center py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-500 text-zinc-950 text-xs font-black shadow-lg hover:brightness-110 transition-all"
+                  className="block text-center py-2.5 rounded-xl bg-gradient-to-r from-[#C5A059] to-[#9E7D3B] text-zinc-950 text-xs font-black shadow-md hover:brightness-105 transition-all"
                 >
                   اشتراك ملكي VIP
                 </Link>

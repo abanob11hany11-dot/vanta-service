@@ -13,7 +13,7 @@ export function CurrencySwitcher() {
         onClick={() => setCurrency("USD")}
         className={`px-2.5 py-1 rounded-lg transition-all flex items-center gap-1 ${
           currency === "USD"
-            ? "bg-gradient-to-r from-amber-500 to-yellow-500 text-zinc-950 font-bold shadow-sm"
+            ? "bg-gradient-to-r from-[#C5A059] to-[#9E7D3B] text-zinc-950 font-bold shadow-sm"
             : "text-zinc-400 hover:text-amber-200"
         }`}
       >
@@ -23,7 +23,7 @@ export function CurrencySwitcher() {
         onClick={() => setCurrency("EGP")}
         className={`px-2.5 py-1 rounded-lg transition-all flex items-center gap-1 ${
           currency === "EGP"
-            ? "bg-gradient-to-r from-amber-500 to-yellow-500 text-zinc-950 font-bold shadow-sm"
+            ? "bg-gradient-to-r from-[#C5A059] to-[#9E7D3B] text-zinc-950 font-bold shadow-sm"
             : "text-zinc-400 hover:text-amber-200"
         }`}
       >

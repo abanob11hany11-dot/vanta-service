@@ -86,7 +86,7 @@ export default function AboutPage() {
         </div>
         <h1 className="text-4xl sm:text-5xl font-black text-white leading-tight">
           حول منصة{" "}
-          <span className="bg-gradient-to-r from-amber-200 via-amber-400 to-yellow-500 bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-[#EDE0C8] via-[#C5A059] to-[#9E7D3B] bg-clip-text text-transparent">
             Vanta Services
           </span>
         </h1>
@@ -151,7 +151,7 @@ export default function AboutPage() {
             </div>
             <h3 className="text-base font-bold text-white">تنفيذ فوري مؤتمت</h3>
             <p className="text-xs text-zinc-400 leading-relaxed">
-              ربط مباشر ببروتوكولات DHRU Fusion لمعالجة طلبات الفك والتفعيل خلال ثوانٍ معدودة دون تأخير.
+              ربط مباشر بأحدث خوادم المعالجة السحابية المؤتمتة لمعالجة طلبات الفك والتفعيل خلال ثوانٍ معدودة دون تأخير.
             </p>
           </div>
 

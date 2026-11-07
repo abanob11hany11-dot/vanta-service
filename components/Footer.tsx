@@ -128,7 +128,7 @@ export function Footer() {
               </div>
               <div className="flex items-center gap-2">
                 <Zap className="w-4 h-4 text-amber-400 shrink-0" />
-                <span>اتصال مباشر بأسرع سيرفر DHRU عالمي</span>
+                <span>خوادم سحابية فائقة السرعة بمعالجة فورية</span>
               </div>
             </div>
           </div>

@@ -19,13 +19,13 @@ const inter = Inter({
 });
 
 export const viewport: Viewport = {
-  themeColor: "#d4af37",
+  themeColor: "#C5A059",
 };
 
 export const metadata: Metadata = {
   title: "Vanta Services | سيرفر خدمات السوفت وير وبرمجة الهواتف",
   description:
-    "المنصة الاحترافية الأولى لخدمات الـ GSM، تخطي حسابات جوجل FRP، تفعيل واشتراكات البوكسات، شحن الألعاب، وفحص السيريال الرسمي عبر سيرفر DHRU الفوري.",
+    "المنصة الاحترافية الأولى لخدمات الـ GSM، تخطي حسابات جوجل FRP، تفعيل واشتراكات البوكسات، شحن الألعاب، وفحص السيريال الرسمي عبر خوادم سحابية فائقة السرعة معالجة فورية وضمان كامل.",
   icons: {
     icon: "/favicon.ico",
   },

@@ -109,7 +109,7 @@ export default function DashboardOverviewPage() {
           </Link>
           <Link
             href="/dashboard/top-up"
-            className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-500 text-zinc-950 text-xs font-black shadow-lg hover:brightness-110 transition-all flex items-center gap-1.5"
+            className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#C5A059] to-[#9E7D3B] text-zinc-950 text-xs font-bold shadow-md hover:brightness-105 transition-all flex items-center gap-1.5"
           >
             <Wallet className="w-3.5 h-3.5" />
             <span>شحن الرصيد</span>
@@ -120,7 +120,7 @@ export default function DashboardOverviewPage() {
       {/* Profile & Currency Preference Section */}
       <div className="p-6 rounded-2xl bg-zinc-950 border border-amber-500/25 flex flex-col md:flex-row md:items-center justify-between gap-6 shadow-xl">
         <div className="flex items-center gap-4">
-          <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-amber-500 to-yellow-600 flex items-center justify-center text-zinc-950 font-black text-lg shadow-md shrink-0">
+          <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#C5A059] to-[#9E7D3B] flex items-center justify-center text-zinc-950 font-black text-lg shadow-md shrink-0">
             {currentUser?.username?.charAt(0).toUpperCase() || "U"}
           </div>
           <div>
