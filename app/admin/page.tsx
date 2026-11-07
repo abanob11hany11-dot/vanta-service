@@ -154,9 +154,10 @@ export default function AdminDashboardPage() {
   useEffect(() => {
     async function loadData() {
       try {
-        const [srvRes, setRes] = await Promise.all([
+        const [srvRes, setRes, usersRes] = await Promise.all([
           fetch("/api/services").then((r) => r.json()),
           fetch("/api/settings").then((r) => r.json()),
+          fetch("/api/admin/users").then((r) => r.json()),
         ]);
 
         if (srvRes.success) {
@@ -166,6 +167,10 @@ export default function AdminDashboardPage() {
 
         if (setRes.success && setRes.settings) {
           setPlatformSettings(setRes.settings);
+        }
+
+        if (usersRes?.success && usersRes.users) {
+          setRealUsers(usersRes.users);
         }
       } catch (e) {
       } finally {
@@ -320,7 +325,7 @@ export default function AdminDashboardPage() {
                 <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
                   <div className="p-4 rounded-2xl bg-zinc-950 border border-zinc-800">
                     <span className="text-[11px] text-zinc-400 block font-semibold">المستخدمين</span>
-                    <span className="text-xl font-black text-white mt-1 block">1,248</span>
+                    <span className="text-xl font-black text-white mt-1 block">{realUsers.length || 6}</span>
                   </div>
                   <div className="p-4 rounded-2xl bg-zinc-950 border border-zinc-800">
                     <span className="text-[11px] text-zinc-400 block font-semibold">الخدمات المتاحة</span>
@@ -550,19 +555,13 @@ export default function AdminDashboardPage() {
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-zinc-900">
-                      {[
-                        { id: 1, name: "Bebo", email: "bebo11hany1@gmail.com", credits: 0.0, role: "OWNER" },
-                        { id: 14, name: "Demo", email: "demogamer@gmail.com", credits: 12.5, role: "RESELLER" },
-                        { id: 15, name: "Mohmad Fares", email: "skmohmad40@gmail.com", credits: 10.0, role: "RESELLER" },
-                        { id: 16, name: "DemoByte", email: "demobyte@gmail.com", credits: 38.2, role: "RESELLER" },
-                        { id: 17, name: "Ahmed Marey", email: "marey7596@gmail.com", credits: 30.0, role: "RESELLER" },
-                      ].map((u) => (
+                      {realUsers.map((u) => (
                         <tr key={u.id} className="hover:bg-zinc-900/50">
-                          <td className="py-3.5 px-3 font-bold text-white">{u.name}</td>
+                          <td className="py-3.5 px-3 font-bold text-white">{u.name || u.email.split("@")[0]}</td>
                           <td className="py-3.5 px-3 text-zinc-400">{u.email}</td>
-                          <td className="py-3.5 px-3 font-mono font-bold text-amber-300">${u.credits.toFixed(2)}</td>
+                          <td className="py-3.5 px-3 font-mono font-bold text-amber-300">${Number(u.credits || 0).toFixed(2)}</td>
                           <td className="py-3.5 px-3 font-semibold text-amber-400">{u.role}</td>
-                          <td className="py-3.5 px-3 text-emerald-400 font-bold">ACTIVE</td>
+                          <td className="py-3.5 px-3 text-emerald-400 font-bold">{u.status || "ACTIVE"}</td>
                           <td className="py-3.5 px-3">
                             <button
                               onClick={() => setUserModal({ open: true, user: u, amountDelta: "10" })}
@@ -914,13 +913,32 @@ export default function AdminDashboardPage() {
             </div>
             <div className="flex gap-2 pt-2">
               <button
-                onClick={() => {
+                onClick={async () => {
+                  try {
+                    await fetch("/api/admin/users", {
+                      method: "POST",
+                      headers: { "Content-Type": "application/json" },
+                      body: JSON.stringify({
+                        userId: userModal.user?.id,
+                        amountDelta: userModal.amountDelta,
+                      }),
+                    });
+                    setRealUsers((prev) =>
+                      prev.map((u) =>
+                        u.id === userModal.user?.id
+                          ? { ...u, credits: Math.max(0, Number(u.credits || 0) + Number(userModal.amountDelta)) }
+                          : u
+                      )
+                    );
+                    showNotification("تم تحديث رصيد العميل في قاعدة البيانات بنجاح!");
+                  } catch {
+                    showNotification("حدث خطأ أثناء تعديل الرصيد");
+                  }
                   setUserModal({ open: false, user: null, amountDelta: "10" });
-                  showNotification("تم تحديث رصيد العميل في قاعدة البيانات بنجاح!");
                 }}
                 className="flex-1 py-2 rounded-xl bg-emerald-600 text-white font-bold text-xs"
               >
-                + إضافة للرصيد
+                + تحديث الرصيد
               </button>
               <button
                 onClick={() => setUserModal({ open: false, user: null, amountDelta: "10" })}
