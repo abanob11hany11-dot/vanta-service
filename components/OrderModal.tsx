@@ -124,33 +124,33 @@ export function OrderModal({ service, onClose, userBalance = 45.0 }: OrderModalP
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-in fade-in duration-200">
-      <div className="relative w-full max-w-lg rounded-2xl bg-zinc-950 border border-amber-500/40 p-6 shadow-[0_0_50px_rgba(212,175,55,0.25)] text-zinc-100 overflow-hidden">
-        {/* Top Gold Ambient Glow */}
-        <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-amber-400 to-transparent" />
+      <div className="relative w-full max-w-lg rounded-2xl bg-zinc-950 border border-white/[0.1] p-6 shadow-2xl text-zinc-100 overflow-hidden">
+        {/* Top Gold Ambient Accent */}
+        <div className="absolute top-0 inset-x-0 h-0.5 bg-gradient-to-r from-transparent via-[#C5A059] to-transparent" />
 
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-4 end-4 p-2 rounded-xl bg-zinc-900/80 hover:bg-zinc-800 text-zinc-400 hover:text-amber-300 transition-colors"
+          className="absolute top-4 end-4 p-2 rounded-xl bg-zinc-900/80 hover:bg-zinc-800 text-zinc-400 hover:text-[#DFCA9B] transition-colors"
         >
           <X className="w-5 h-5" />
         </button>
 
         {orderResult ? (
           <div className="text-center py-8 space-y-4">
-            <div className="w-16 h-16 rounded-full bg-amber-500/10 border-2 border-amber-400 flex items-center justify-center mx-auto text-amber-400 shadow-[0_0_20px_rgba(212,175,55,0.4)]">
+            <div className="w-16 h-16 rounded-full bg-[#C5A059]/10 border border-[#C5A059]/40 flex items-center justify-center mx-auto text-[#DFCA9B] shadow-sm">
               <CheckCircle2 className="w-10 h-10" />
             </div>
-            <h3 className="text-xl font-bold text-amber-300">
+            <h3 className="text-xl font-bold text-[#DFCA9B]">
               {t.orderModal.successMsg}
             </h3>
             <p className="text-sm text-zinc-400">
-              رقم طلبك: <span className="font-mono text-amber-400 font-bold">#{orderResult.orderId}</span>
+              رقم طلبك: <span className="font-mono text-[#C5A059] font-bold">#{orderResult.orderId}</span>
             </p>
             <div className="pt-4 flex gap-3 justify-center">
               <Link
                 href="/dashboard/orders"
-                className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-500 text-zinc-950 font-bold text-sm shadow-lg hover:brightness-110 transition-all"
+                className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#C5A059] to-[#9E7D3B] text-zinc-950 font-bold text-sm shadow-md hover:brightness-105 transition-all"
               >
                 متابعة الطلب في لوحتي
               </Link>
@@ -165,7 +165,7 @@ export function OrderModal({ service, onClose, userBalance = 45.0 }: OrderModalP
         ) : (
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <div className="flex items-center gap-2 text-xs font-semibold text-amber-400/90 mb-1">
+              <div className="flex items-center gap-2 text-xs font-semibold text-[#C5A059] mb-1">
                 <Zap className="w-4 h-4" />
                 <span>{t.orderModal.title}</span>
               </div>
@@ -174,14 +174,14 @@ export function OrderModal({ service, onClose, userBalance = 45.0 }: OrderModalP
             </div>
 
             {/* Price & Delivery badge bar */}
-            <div className="flex items-center justify-between p-3 rounded-xl bg-zinc-900/90 border border-amber-500/20">
+            <div className="flex items-center justify-between p-3 rounded-xl bg-zinc-900/90 border border-white/[0.08]">
               <div>
                 <span className="text-xs text-zinc-400 block">{t.orderModal.price}</span>
-                <span className="text-lg font-black text-amber-300">{formatPrice(service.price)}</span>
+                <span className="text-lg font-black text-[#DFCA9B]">{formatPrice(service.price)}</span>
               </div>
               <div className="text-end">
                 <span className="text-xs text-zinc-400 flex items-center gap-1 justify-end">
-                  <Clock className="w-3.5 h-3.5 text-amber-400" />
+                  <Clock className="w-3.5 h-3.5 text-[#C5A059]" />
                   {service.delivery_time}
                 </span>
                 <span className="text-xs font-medium text-emerald-400 block mt-0.5">
@@ -191,7 +191,7 @@ export function OrderModal({ service, onClose, userBalance = 45.0 }: OrderModalP
             </div>
 
             {notes && (
-              <div className="p-2.5 rounded-lg bg-amber-500/10 border border-amber-500/20 text-xs text-amber-200/90">
+              <div className="p-2.5 rounded-lg bg-[#C5A059]/10 border border-[#C5A059]/20 text-xs text-[#DFCA9B]">
                 <strong>تنبيه هـام: </strong>
                 {notes}
               </div>
@@ -202,7 +202,7 @@ export function OrderModal({ service, onClose, userBalance = 45.0 }: OrderModalP
               {service.required_fields.includes("field_imei") && (
                 <div>
                   <label className="block text-xs font-bold text-zinc-200 mb-1">
-                    {t.orderModal.imeiLabel} <span className="text-amber-400">*</span>
+                    {t.orderModal.imeiLabel} <span className="text-[#C5A059]">*</span>
                   </label>
                   <input
                     type="text"
@@ -210,7 +210,7 @@ export function OrderModal({ service, onClose, userBalance = 45.0 }: OrderModalP
                     placeholder="358491029384751"
                     value={formData["field_imei"] || ""}
                     onChange={(e) => handleInputChange("field_imei", e.target.value.replace(/\D/g, ""))}
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-zinc-900 border border-zinc-700 focus:border-amber-400 focus:outline-none text-sm font-mono tracking-widest text-white placeholder-zinc-500 transition-colors"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-zinc-900 border border-zinc-700 focus:border-[#C5A059] focus:outline-none text-sm font-mono tracking-widest text-white placeholder-zinc-500 transition-colors"
                   />
                   <span className="text-[11px] text-zinc-400 block mt-1">{t.orderModal.imeiHint}</span>
                   {errors["field_imei"] && (
@@ -222,14 +222,14 @@ export function OrderModal({ service, onClose, userBalance = 45.0 }: OrderModalP
               {service.required_fields.includes("field_player_id") && (
                 <div>
                   <label className="block text-xs font-bold text-zinc-200 mb-1">
-                    {t.orderModal.playerIdLabel} <span className="text-amber-400">*</span>
+                    {t.orderModal.playerIdLabel} <span className="text-[#C5A059]">*</span>
                   </label>
                   <input
                     type="text"
                     placeholder="512948194"
                     value={formData["field_player_id"] || ""}
                     onChange={(e) => handleInputChange("field_player_id", e.target.value)}
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-zinc-900 border border-zinc-700 focus:border-amber-400 focus:outline-none text-sm font-mono text-white placeholder-zinc-500 transition-colors"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-zinc-900 border border-zinc-700 focus:border-[#C5A059] focus:outline-none text-sm font-mono text-white placeholder-zinc-500 transition-colors"
                   />
                   {errors["field_player_id"] && (
                     <span className="text-xs text-rose-400 block mt-1">{errors["field_player_id"]}</span>
@@ -240,14 +240,14 @@ export function OrderModal({ service, onClose, userBalance = 45.0 }: OrderModalP
               {service.required_fields.includes("field_username") && (
                 <div>
                   <label className="block text-xs font-bold text-zinc-200 mb-1">
-                    {t.orderModal.usernameLabel} <span className="text-amber-400">*</span>
+                    {t.orderModal.usernameLabel} <span className="text-[#C5A059]">*</span>
                   </label>
                   <input
                     type="text"
                     placeholder="user@example.com"
                     value={formData["field_username"] || ""}
                     onChange={(e) => handleInputChange("field_username", e.target.value)}
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-zinc-900 border border-zinc-700 focus:border-amber-400 focus:outline-none text-sm text-white placeholder-zinc-500 transition-colors"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-zinc-900 border border-zinc-700 focus:border-[#C5A059] focus:outline-none text-sm text-white placeholder-zinc-500 transition-colors"
                   />
                   {errors["field_username"] && (
                     <span className="text-xs text-rose-400 block mt-1">{errors["field_username"]}</span>
@@ -258,14 +258,14 @@ export function OrderModal({ service, onClose, userBalance = 45.0 }: OrderModalP
               {service.required_fields.includes("field_ultraviewer") && (
                 <div>
                   <label className="block text-xs font-bold text-zinc-200 mb-1">
-                    {t.orderModal.ultraviewerLabel} <span className="text-amber-400">*</span>
+                    {t.orderModal.ultraviewerLabel} <span className="text-[#C5A059]">*</span>
                   </label>
                   <textarea
                     rows={2}
                     placeholder="ID: 84 920 182 | Pass: 1948"
                     value={formData["field_ultraviewer"] || ""}
                     onChange={(e) => handleInputChange("field_ultraviewer", e.target.value)}
-                    className="w-full px-3.5 py-2 rounded-xl bg-zinc-900 border border-zinc-700 focus:border-amber-400 focus:outline-none text-sm font-mono text-white placeholder-zinc-500 transition-colors"
+                    className="w-full px-3.5 py-2 rounded-xl bg-zinc-900 border border-zinc-700 focus:border-[#C5A059] focus:outline-none text-sm font-mono text-white placeholder-zinc-500 transition-colors"
                   />
                   {errors["field_ultraviewer"] && (
                     <span className="text-xs text-rose-400 block mt-1">{errors["field_ultraviewer"]}</span>
@@ -283,7 +283,7 @@ export function OrderModal({ service, onClose, userBalance = 45.0 }: OrderModalP
                 </div>
                 <Link
                   href="/dashboard/top-up"
-                  className="px-3 py-1 rounded-lg bg-amber-500 text-zinc-950 font-bold hover:brightness-110 transition-all shrink-0"
+                  className="px-3 py-1 rounded-lg bg-gradient-to-r from-[#C5A059] to-[#9E7D3B] text-zinc-950 font-bold hover:brightness-105 transition-all shrink-0"
                 >
                   شحن المحفظة
                 </Link>
@@ -301,7 +301,7 @@ export function OrderModal({ service, onClose, userBalance = 45.0 }: OrderModalP
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="flex-1 py-3 rounded-xl bg-gradient-to-r from-amber-500 via-amber-400 to-yellow-500 text-zinc-950 font-black text-sm shadow-[0_0_20px_rgba(212,175,55,0.3)] hover:brightness-110 hover:shadow-[0_0_25px_rgba(212,175,55,0.5)] transition-all disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                className="flex-1 py-3 rounded-xl bg-gradient-to-r from-[#C5A059] to-[#9E7D3B] text-zinc-950 font-bold text-sm shadow-md hover:brightness-105 transition-all disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
               >
                 <ShieldCheck className="w-4 h-4" />
                 <span>{isSubmitting ? t.orderModal.submitting : t.orderModal.confirmBtn}</span>

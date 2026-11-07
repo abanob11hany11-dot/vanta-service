@@ -80,8 +80,8 @@ export default function AboutPage() {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-16">
       {/* Hero Section */}
       <div className="text-center max-w-3xl mx-auto space-y-4">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-semibold shadow-[0_0_20px_rgba(212,175,55,0.2)]">
-          <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#C5A059]/10 border border-[#C5A059]/30 text-[#DFCA9B] text-xs font-semibold shadow-sm">
+          <Sparkles className="w-3.5 h-3.5 text-[#C5A059]" />
           <span>منصة Vanta Services المعتمدة</span>
         </div>
         <h1 className="text-4xl sm:text-5xl font-black text-white leading-tight">
@@ -98,7 +98,7 @@ export default function AboutPage() {
       {/* Social Media Community Section */}
       <div className="space-y-6">
         <div className="text-center space-y-2">
-          <span className="text-xs font-bold text-amber-400 uppercase tracking-widest block">
+          <span className="text-xs font-bold text-[#C5A059] uppercase tracking-widest block">
             قنوات التواصل والمجتمع
           </span>
           <h2 className="text-2xl sm:text-3xl font-black text-white">
@@ -115,7 +115,7 @@ export default function AboutPage() {
             return (
               <div
                 key={item.id}
-                className="relative rounded-3xl bg-zinc-950/90 border border-amber-500/25 p-7 flex flex-col justify-between shadow-[0_4px_30px_rgba(0,0,0,0.5)] hover:border-amber-400/60 transition-all hover:-translate-y-1 hover:shadow-[0_10px_35px_rgba(212,175,55,0.2)]"
+                className="card-matte relative rounded-3xl p-7 flex flex-col justify-between hover:border-[#C5A059]/40 transition-all duration-300 hover:-translate-y-1"
               >
                 <div>
                   <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${item.color} flex items-center justify-center text-white mb-5 shadow-lg`}>
@@ -131,7 +131,7 @@ export default function AboutPage() {
                   href={item.url}
                   target="_blank"
                   rel="noreferrer"
-                  className="w-full py-3 rounded-xl bg-zinc-900 border border-amber-500/30 hover:border-amber-400 text-amber-300 font-bold text-xs flex items-center justify-center gap-2 hover:bg-zinc-800 transition-all shadow-md"
+                  className="w-full py-3 rounded-xl bg-zinc-900 border border-white/[0.08] hover:border-[#C5A059]/50 text-[#DFCA9B] font-bold text-xs flex items-center justify-center gap-2 hover:bg-zinc-800 transition-all shadow-sm"
                 >
                   <span>{item.btnText}</span>
                   <Arrow className="w-3.5 h-3.5" />
@@ -143,10 +143,10 @@ export default function AboutPage() {
       </div>
 
       {/* Core Advantages */}
-      <div className="p-8 sm:p-12 rounded-3xl bg-gradient-to-b from-zinc-900 via-zinc-950 to-zinc-950 border border-amber-500/30 relative overflow-hidden shadow-[0_0_50px_rgba(212,175,55,0.15)]">
+      <div className="p-8 sm:p-12 rounded-3xl bg-zinc-950/80 border border-white/[0.08] relative overflow-hidden shadow-xl">
         <div className="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="space-y-3">
-            <div className="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400">
+            <div className="w-10 h-10 rounded-xl bg-[#C5A059]/10 border border-[#C5A059]/20 flex items-center justify-center text-[#DFCA9B]">
               <Zap className="w-5 h-5" />
             </div>
             <h3 className="text-base font-bold text-white">تنفيذ فوري مؤتمت</h3>
@@ -156,7 +156,7 @@ export default function AboutPage() {
           </div>
 
           <div className="space-y-3">
-            <div className="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400">
+            <div className="w-10 h-10 rounded-xl bg-[#C5A059]/10 border border-[#C5A059]/20 flex items-center justify-center text-[#DFCA9B]">
               <ShieldCheck className="w-5 h-5" />
             </div>
             <h3 className="text-base font-bold text-white">ضمان استرداد الرصيد 100%</h3>
@@ -166,7 +166,7 @@ export default function AboutPage() {
           </div>
 
           <div className="space-y-3">
-            <div className="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400">
+            <div className="w-10 h-10 rounded-xl bg-[#C5A059]/10 border border-[#C5A059]/20 flex items-center justify-center text-[#DFCA9B]">
               <Users className="w-5 h-5" />
             </div>
             <h3 className="text-base font-bold text-white">دعم فني مخصص</h3>

@@ -65,8 +65,8 @@ export default function ServicesPage() {
               onClick={() => setSelectedCategory(c.id)}
               className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all ${
                 selectedCategory === c.id
-                  ? "bg-gradient-to-r from-amber-500 to-yellow-500 text-zinc-950 shadow-[0_0_15px_rgba(212,175,55,0.3)]"
-                  : "bg-zinc-900 border border-zinc-800 text-zinc-300 hover:border-amber-500/40 hover:text-amber-200"
+                  ? "bg-gradient-to-r from-[#C5A059] to-[#9E7D3B] text-zinc-950 shadow-md"
+                  : "bg-zinc-900/80 border border-zinc-800 text-zinc-300 hover:border-[#C5A059]/40 hover:text-amber-200"
               }`}
             >
               {lang === "ar" ? c.name_ar : c.name_en}
@@ -75,13 +75,13 @@ export default function ServicesPage() {
         </div>
 
         <div className="relative w-full md:w-72">
-          <Search className="w-4 h-4 text-amber-400 absolute start-3 top-1/2 -translate-y-1/2" />
+          <Search className="w-4 h-4 text-[#C5A059] absolute start-3 top-1/2 -translate-y-1/2" />
           <input
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="بحث فوري..."
-            className="w-full bg-zinc-900 border border-zinc-700 rounded-xl ps-9 pe-3 py-2 text-xs text-white placeholder-zinc-500 focus:border-amber-400 focus:outline-none transition-colors"
+            className="w-full bg-zinc-900/90 border border-zinc-700/80 rounded-xl ps-9 pe-3 py-2 text-xs text-white placeholder-zinc-500 focus:border-[#C5A059] focus:outline-none transition-colors"
           />
         </div>
       </div>
@@ -93,7 +93,7 @@ export default function ServicesPage() {
           return (
             <div
               key={service.id}
-              className="rounded-2xl bg-zinc-950 border border-amber-500/25 p-5 flex flex-col justify-between shadow-lg hover:border-amber-400/50 transition-all hover:shadow-[0_8px_30px_rgba(212,175,55,0.15)]"
+              className="card-matte rounded-2xl p-5 flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-center justify-between gap-2 mb-2">
@@ -109,7 +109,7 @@ export default function ServicesPage() {
                   {title}
                 </h3>
                 {service.description_ar && (
-                  <p className="text-xs text-zinc-400 mt-2 line-clamp-2">
+                  <p className="text-xs text-zinc-400 mt-2 line-clamp-2 leading-relaxed">
                     {service.description_ar}
                   </p>
                 )}
@@ -118,13 +118,13 @@ export default function ServicesPage() {
               <div className="mt-5 pt-4 border-t border-zinc-900 flex items-center justify-between">
                 <div>
                   <span className="text-[11px] text-zinc-400 block">السعر:</span>
-                  <span className="text-lg font-black text-amber-300">
+                  <span className="text-lg font-black text-[#DFCA9B]">
                     {formatPrice(service.price)}
                   </span>
                 </div>
                 <button
                   onClick={() => setSelectedService(service)}
-                  className="px-4 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-500 text-zinc-950 text-xs font-black shadow-md hover:brightness-110 transition-all flex items-center gap-1.5"
+                  className="px-4 py-2 rounded-xl bg-gradient-to-r from-[#C5A059] to-[#9E7D3B] text-zinc-950 text-xs font-bold shadow-sm hover:brightness-105 transition-all flex items-center gap-1.5"
                 >
                   <Zap className="w-3.5 h-3.5" />
                   <span>طلب الآن</span>

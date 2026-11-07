@@ -35,20 +35,18 @@ export function Logo({ size = "md", showText = true }: LogoProps) {
         >
           <defs>
             <linearGradient id="vantaGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#FFF2A7" />
-              <stop offset="25%" stopColor="#F5B82E" />
-              <stop offset="50%" stopColor="#D4AF37" />
-              <stop offset="75%" stopColor="#996515" />
-              <stop offset="100%" stopColor="#FFE082" />
+              <stop offset="0%" stopColor="#EDE0C8" />
+              <stop offset="50%" stopColor="#C5A059" />
+              <stop offset="100%" stopColor="#9E7D3B" />
             </linearGradient>
             <linearGradient id="vantaDarkMetallic" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#2A2416" />
-              <stop offset="50%" stopColor="#14110B" />
-              <stop offset="100%" stopColor="#0B0906" />
+              <stop offset="0%" stopColor="#1C1A14" />
+              <stop offset="50%" stopColor="#0F0E0A" />
+              <stop offset="100%" stopColor="#080705" />
             </linearGradient>
             <linearGradient id="goldStroke" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#FCE588" />
-              <stop offset="100%" stopColor="#C59B27" />
+              <stop offset="0%" stopColor="#E2D4BB" />
+              <stop offset="100%" stopColor="#B38D42" />
             </linearGradient>
           </defs>
 
@@ -87,12 +85,12 @@ export function Logo({ size = "md", showText = true }: LogoProps) {
         <div className="flex flex-col">
           <div className="flex items-center gap-1.5">
             <span
-              className={`font-black tracking-wider uppercase bg-gradient-to-r from-amber-200 via-amber-400 to-yellow-500 bg-clip-text text-transparent ${textSizes[size]}`}
+              className={`font-black tracking-wider uppercase bg-gradient-to-r from-[#EDE0C8] via-[#C5A059] to-[#9E7D3B] bg-clip-text text-transparent ${textSizes[size]}`}
             >
               VANTA
             </span>
           </div>
-          <span className="text-[10px] font-semibold tracking-[0.25em] uppercase text-amber-300/80 -mt-1">
+          <span className="text-[10px] font-bold tracking-[0.25em] uppercase text-[#C5A059]/90 -mt-0.5">
             SERVICES
           </span>
         </div>

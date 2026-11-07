@@ -10,9 +10,9 @@ export function Footer() {
   const { t } = useLanguage();
 
   return (
-    <footer className="relative bg-zinc-950 border-t border-amber-500/20 text-zinc-400 overflow-hidden">
+    <footer className="relative bg-[#070709] border-t border-white/[0.06] text-zinc-400 overflow-hidden">
       {/* Ambient background gold glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-24 bg-amber-500/5 blur-3xl pointer-events-none" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-24 bg-[#C5A059]/5 blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
@@ -27,7 +27,7 @@ export function Footer() {
                 href="https://t.me"
                 target="_blank"
                 rel="noreferrer"
-                className="w-9 h-9 rounded-xl bg-zinc-900 border border-amber-500/30 flex items-center justify-center text-amber-400 hover:bg-amber-500 hover:text-zinc-950 transition-all shadow-[0_0_10px_rgba(212,175,55,0.15)]"
+                className="w-9 h-9 rounded-xl bg-zinc-900 border border-white/[0.08] flex items-center justify-center text-[#DFCA9B] hover:bg-[#C5A059] hover:text-zinc-950 transition-all shadow-sm"
                 aria-label="Telegram"
               >
                 <Send className="w-4 h-4" />
@@ -36,7 +36,7 @@ export function Footer() {
                 href="https://wa.me"
                 target="_blank"
                 rel="noreferrer"
-                className="w-9 h-9 rounded-xl bg-zinc-900 border border-amber-500/30 flex items-center justify-center text-emerald-400 hover:bg-emerald-500 hover:text-zinc-950 transition-all shadow-[0_0_10px_rgba(16,185,129,0.15)]"
+                className="w-9 h-9 rounded-xl bg-zinc-900 border border-white/[0.08] flex items-center justify-center text-emerald-400 hover:bg-emerald-500 hover:text-zinc-950 transition-all shadow-sm"
                 aria-label="WhatsApp"
               >
                 <MessageCircle className="w-4 h-4" />
@@ -46,32 +46,32 @@ export function Footer() {
 
           {/* Col 2: Services Categories */}
           <div className="space-y-3">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-amber-300">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-[#DFCA9B]">
               {t.categoriesSection.title}
             </h4>
             <ul className="space-y-2 text-xs">
               <li>
-                <Link href="/services" className="hover:text-amber-400 transition-colors">
+                <Link href="/services" className="hover:text-[#C5A059] transition-colors">
                   تخطي حماية جوجل (FRP)
                 </Link>
               </li>
               <li>
-                <Link href="/services" className="hover:text-amber-400 transition-colors">
+                <Link href="/services" className="hover:text-[#C5A059] transition-colors">
                   تفعيل واشتراكات البوكسات (UnlockTool / Chimera)
                 </Link>
               </li>
               <li>
-                <Link href="/services" className="hover:text-amber-400 transition-colors">
+                <Link href="/services" className="hover:text-[#C5A059] transition-colors">
                   فحص السيريال الرسمي (GSX Apple Check)
                 </Link>
               </li>
               <li>
-                <Link href="/services" className="hover:text-amber-400 transition-colors">
+                <Link href="/services" className="hover:text-[#C5A059] transition-colors">
                   شحن الألعاب الفوري (PUBG / Free Fire)
                 </Link>
               </li>
               <li>
-                <Link href="/services" className="hover:text-amber-400 transition-colors">
+                <Link href="/services" className="hover:text-[#C5A059] transition-colors">
                   تأجير أدوات السوفت وير عن بعد
                 </Link>
               </li>
@@ -80,32 +80,32 @@ export function Footer() {
 
           {/* Col 3: Quick Navigation */}
           <div className="space-y-3">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-amber-300">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-[#DFCA9B]">
               {t.footer.quickLinks}
             </h4>
             <ul className="space-y-2 text-xs">
               <li>
-                <Link href="/dashboard" className="hover:text-amber-400 transition-colors">
+                <Link href="/dashboard" className="hover:text-[#C5A059] transition-colors">
                   {t.nav.dashboard}
                 </Link>
               </li>
               <li>
-                <Link href="/dashboard/orders" className="hover:text-amber-400 transition-colors">
+                <Link href="/dashboard/orders" className="hover:text-[#C5A059] transition-colors">
                   {t.nav.orders}
                 </Link>
               </li>
               <li>
-                <Link href="/dashboard/top-up" className="hover:text-amber-400 transition-colors">
+                <Link href="/dashboard/top-up" className="hover:text-[#C5A059] transition-colors">
                   {t.nav.topUp}
                 </Link>
               </li>
               <li>
-                <Link href="/terms" className="hover:text-amber-400 transition-colors">
+                <Link href="/terms" className="hover:text-[#C5A059] transition-colors">
                   {t.footer.terms}
                 </Link>
               </li>
               <li>
-                <Link href="/disclaimer" className="hover:text-amber-400 transition-colors">
+                <Link href="/disclaimer" className="hover:text-[#C5A059] transition-colors">
                   {t.footer.disclaimer}
                 </Link>
               </li>
@@ -114,20 +114,20 @@ export function Footer() {
 
           {/* Col 4: Trust & Security Badges */}
           <div className="space-y-3">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-amber-300">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-[#DFCA9B]">
               الأمان والضمان
             </h4>
             <div className="space-y-2.5 text-xs text-zinc-400">
               <div className="flex items-center gap-2">
-                <ShieldCheck className="w-4 h-4 text-amber-400 shrink-0" />
+                <ShieldCheck className="w-4 h-4 text-[#C5A059] shrink-0" />
                 <span>ضمان استرداد الرصيد التلقائي للطلبات المرفوضة</span>
               </div>
               <div className="flex items-center gap-2">
-                <Lock className="w-4 h-4 text-amber-400 shrink-0" />
+                <Lock className="w-4 h-4 text-[#C5A059] shrink-0" />
                 <span>معاملات مشفرة 100% وبوابات دفع معتمدة</span>
               </div>
               <div className="flex items-center gap-2">
-                <Zap className="w-4 h-4 text-amber-400 shrink-0" />
+                <Zap className="w-4 h-4 text-[#C5A059] shrink-0" />
                 <span>خوادم سحابية فائقة السرعة بمعالجة فورية</span>
               </div>
             </div>
@@ -139,7 +139,7 @@ export function Footer() {
           <p>{t.footer.copyright}</p>
           <div className="flex items-center gap-2">
             <span className="text-zinc-500">Developed</span>
-            <span className="text-amber-400 font-black tracking-wider">By Bebo</span>
+            <span className="text-[#DFCA9B] font-bold tracking-wider">By Bebo</span>
           </div>
         </div>
       </div>

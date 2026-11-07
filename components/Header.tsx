@@ -36,7 +36,7 @@ export function Header() {
   const Arrow = dir === "rtl" ? ArrowLeft : ArrowRight;
 
   return (
-    <header className="sticky top-0 z-40 w-full backdrop-blur-xl bg-zinc-950/85 border-b border-amber-500/20 shadow-[0_4px_30px_rgba(0,0,0,0.5)]">
+    <header className="sticky top-0 z-40 w-full backdrop-blur-xl bg-[#08080C]/90 border-b border-white/[0.06] shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
         {/* Brand Logo */}
         <Logo size="md" />
@@ -45,28 +45,28 @@ export function Header() {
         <nav className="hidden md:flex items-center gap-7 text-sm font-semibold">
           <Link
             href="/"
-            className="text-zinc-200 hover:text-amber-400 transition-colors"
+            className="text-zinc-300 hover:text-[#C5A059] transition-colors"
           >
             {t.nav.home}
           </Link>
           <Link
             href="/services"
-            className="text-zinc-200 hover:text-amber-400 transition-colors"
+            className="text-zinc-300 hover:text-[#C5A059] transition-colors"
           >
             {t.nav.services}
           </Link>
           <Link
             href="/about"
-            className="text-zinc-200 hover:text-amber-400 transition-colors"
+            className="text-zinc-300 hover:text-[#C5A059] transition-colors"
           >
             حول
           </Link>
           {user?.role === "admin" && (
             <Link
               href="/admin"
-              className="px-2.5 py-1 rounded-lg bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-bold hover:bg-amber-500/20 transition-all flex items-center gap-1.5"
+              className="px-2.5 py-1 rounded-lg bg-[#C5A059]/10 border border-[#C5A059]/30 text-[#DFCA9B] text-xs font-bold hover:bg-[#C5A059]/20 transition-all flex items-center gap-1.5"
             >
-              <Shield className="w-3.5 h-3.5 text-amber-400" />
+              <Shield className="w-3.5 h-3.5 text-[#C5A059]" />
               <span>لوحة الإدارة</span>
             </Link>
           )}
@@ -80,16 +80,16 @@ export function Header() {
             <div className="flex items-center gap-3 ps-2 border-s border-zinc-800">
               <Link
                 href="/dashboard/top-up"
-                className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-zinc-900 border border-amber-500/30 hover:border-amber-400 text-amber-300 text-xs font-bold transition-all shadow-[0_0_15px_rgba(212,175,55,0.15)]"
+                className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-zinc-900/90 border border-[#C5A059]/30 hover:border-[#C5A059] text-[#DFCA9B] text-xs font-bold transition-all"
               >
-                <Wallet className="w-3.5 h-3.5 text-amber-400" />
+                <Wallet className="w-3.5 h-3.5 text-[#C5A059]" />
                 <span>${user.balance.toFixed(2)}</span>
               </Link>
               <Link
                 href="/dashboard"
-                className="flex items-center gap-1.5 text-xs text-zinc-300 hover:text-amber-300 font-medium"
+                className="flex items-center gap-1.5 text-xs text-zinc-300 hover:text-[#C5A059] font-medium"
               >
-                <User className="w-3.5 h-3.5 text-amber-400" />
+                <User className="w-3.5 h-3.5 text-[#C5A059]" />
                 <span>{user.username}</span>
               </Link>
               <button
@@ -104,7 +104,7 @@ export function Header() {
             <div className="flex items-center gap-2 ps-2 border-s border-zinc-800">
               <Link
                 href="/login"
-                className="px-3.5 py-1.5 rounded-xl text-xs font-bold text-zinc-200 hover:text-amber-300 transition-colors"
+                className="px-3.5 py-1.5 rounded-xl text-xs font-bold text-zinc-300 hover:text-[#C5A059] transition-colors"
               >
                 {t.nav.login}
               </Link>
@@ -133,46 +133,91 @@ export function Header() {
 
       {/* Mobile drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden border-t border-zinc-800 bg-zinc-950/95 backdrop-blur-2xl px-4 py-6 space-y-4 animate-in slide-in-from-top-4 duration-200">
-          <div className="flex items-center justify-end pb-3 border-b border-zinc-800">
-            {user && (
-              <div className="text-xs font-bold text-amber-400 flex items-center gap-1">
-                <Wallet className="w-3.5 h-3.5" />
-                <span>${user.balance.toFixed(2)}</span>
+        <div className="lg:hidden border-t border-zinc-800 bg-[#08080C]/95 backdrop-blur-2xl px-4 py-6 space-y-4 animate-in slide-in-from-top-4 duration-200">
+          <div className="flex items-center justify-between pb-3 border-b border-zinc-800/80">
+            {user ? (
+              <div className="flex items-center justify-between w-full">
+                <div className="flex items-center gap-2">
+                  <User className="w-4 h-4 text-[#C5A059]" />
+                  <span className="text-xs font-bold text-zinc-200">{user.username}</span>
+                </div>
+                <div className="text-xs font-bold text-[#DFCA9B] flex items-center gap-1">
+                  <Wallet className="w-3.5 h-3.5 text-[#C5A059]" />
+                  <span>${user.balance.toFixed(2)}</span>
+                </div>
+              </div>
+            ) : (
+              <div className="flex items-center gap-2 w-full">
+                <Link
+                  href="/login"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex-1 text-center py-2 rounded-xl bg-zinc-900 border border-zinc-800 text-xs font-bold text-zinc-200 hover:text-[#C5A059]"
+                >
+                  {t.nav.login}
+                </Link>
+                <Link
+                  href="/register"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex-1 text-center py-2 rounded-xl bg-gradient-to-r from-[#C5A059] to-[#9E7D3B] text-zinc-950 text-xs font-bold shadow-sm"
+                >
+                  {t.nav.register}
+                </Link>
               </div>
             )}
           </div>
 
-          <div className="flex flex-col gap-3 text-sm font-semibold">
+          <div className="flex flex-col gap-2 text-sm font-semibold">
             <Link
               href="/"
               onClick={() => setMobileMenuOpen(false)}
-              className="px-3 py-2 rounded-lg text-zinc-200 hover:bg-zinc-900 hover:text-amber-300"
+              className="px-3 py-2 rounded-lg text-zinc-200 hover:bg-zinc-900 hover:text-[#C5A059] transition-colors"
             >
               {t.nav.home}
             </Link>
             <Link
               href="/services"
               onClick={() => setMobileMenuOpen(false)}
-              className="px-3 py-2 rounded-lg text-zinc-200 hover:bg-zinc-900 hover:text-amber-300"
+              className="px-3 py-2 rounded-lg text-zinc-200 hover:bg-zinc-900 hover:text-[#C5A059] transition-colors"
             >
               {t.nav.services}
             </Link>
             <Link
               href="/about"
               onClick={() => setMobileMenuOpen(false)}
-              className="px-3 py-2 rounded-lg text-zinc-200 hover:bg-zinc-900 hover:text-amber-300"
+              className="px-3 py-2 rounded-lg text-zinc-200 hover:bg-zinc-900 hover:text-[#C5A059] transition-colors"
             >
               حول
             </Link>
+            {user && (
+              <Link
+                href="/dashboard"
+                onClick={() => setMobileMenuOpen(false)}
+                className="px-3 py-2 rounded-lg text-zinc-200 hover:bg-zinc-900 hover:text-[#C5A059] transition-colors"
+              >
+                {t.nav.dashboard}
+              </Link>
+            )}
             {user?.role === "admin" && (
               <Link
                 href="/admin"
                 onClick={() => setMobileMenuOpen(false)}
-                className="px-3 py-2 rounded-lg text-amber-300 bg-zinc-900 font-bold"
+                className="px-3 py-2 rounded-lg text-[#DFCA9B] bg-[#C5A059]/10 border border-[#C5A059]/30 font-bold flex items-center gap-2"
               >
-                لوحة الإدارة
+                <Shield className="w-4 h-4 text-[#C5A059]" />
+                <span>لوحة الإدارة</span>
               </Link>
+            )}
+            {user && (
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  handleLogout();
+                }}
+                className="px-3 py-2 rounded-lg text-start text-xs font-bold text-rose-400 hover:bg-rose-500/10 flex items-center gap-2 mt-2 transition-colors"
+              >
+                <LogOut className="w-4 h-4" />
+                <span>تسجيل الخروج</span>
+              </button>
             )}
           </div>
         </div>

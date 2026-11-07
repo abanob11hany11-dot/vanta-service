@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+@theme {
+  --font-sans: var(--font-cairo), var(--font-inter), system-ui, -apple-system, sans-serif;
+}
+
 @layer base {
   :root {
     --bg-vanta: #070709;
@@ -17,7 +21,10 @@
   body {
     background-color: #070709;
     color: #f4f4f5;
+    font-family: var(--font-cairo), var(--font-inter), system-ui, -apple-system, sans-serif;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    letter-spacing: -0.01em;
+    -webkit-font-smoothing: antialiased;
   }
 
   /* Custom Golden Scrollbar */
@@ -39,6 +46,30 @@
 }
 
 /* Refined Matte Luxury Gold Utilities */
+.card-matte {
+  background: rgba(18, 18, 22, 0.75);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-matte:hover {
+  border-color: rgba(197, 160, 89, 0.4);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7), 0 0 20px -5px rgba(197, 160, 89, 0.15);
+}
+
+.btn-gold {
+  background: linear-gradient(135deg, #c5a059 0%, #9e7d3b 100%);
+  color: #09090b;
+  font-weight: 700;
+  transition: all 0.2s ease;
+}
+
+.btn-gold:hover {
+  filter: brightness(1.08);
+  box-shadow: 0 4px 15px rgba(197, 160, 89, 0.25);
+}
+
 .gold-glow {
   box-shadow: 0 0 15px rgba(197, 160, 89, 0.12);
 }

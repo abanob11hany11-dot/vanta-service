@@ -146,23 +146,23 @@ export default function DashboardOverviewPage() {
       {/* KPI Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
         {/* Balance Card */}
-        <div className="relative p-6 rounded-2xl bg-gradient-to-br from-zinc-900 via-zinc-950 to-zinc-950 border border-amber-500/40 shadow-[0_0_25px_rgba(212,175,55,0.15)] flex flex-col justify-between">
+        <div className="relative p-6 rounded-2xl bg-zinc-950/80 border border-white/[0.08] shadow-sm flex flex-col justify-between hover:border-[#C5A059]/40 transition-all">
           <div className="flex items-center justify-between">
             <span className="text-xs font-bold text-zinc-400">
               {t.dashboard.balanceTitle}
             </span>
-            <div className="w-9 h-9 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400">
+            <div className="w-9 h-9 rounded-xl bg-[#C5A059]/10 border border-[#C5A059]/25 flex items-center justify-center text-[#DFCA9B]">
               <Wallet className="w-5 h-5" />
             </div>
           </div>
           <div className="my-4">
-            <span className="text-3xl font-black text-amber-300">
+            <span className="text-3xl font-black text-[#DFCA9B]">
               {formatPrice(stats.balanceUsd)}
             </span>
           </div>
           <div className="pt-2 border-t border-zinc-900 flex items-center justify-between text-xs">
-            <span className="text-zinc-500">تحويل العملة:</span>
-            <CurrencySwitcher />
+            <span className="text-zinc-500">حالة الرصيد:</span>
+            <span className="text-emerald-400 font-semibold">نشط ومعتمد</span>
           </div>
         </div>
 

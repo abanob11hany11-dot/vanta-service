@@ -174,14 +174,13 @@ export default function HomePage() {
     <div className="space-y-24 pb-20">
       {/* 1. HERO SECTION */}
       <section className="relative pt-12 pb-20 overflow-hidden">
-        {/* Glow Effects */}
-        <div className="absolute top-1/4 start-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-amber-500/10 blur-[120px] rounded-full pointer-events-none" />
-        <div className="absolute -top-10 end-10 w-72 h-72 bg-yellow-600/10 blur-3xl pointer-events-none" />
+        {/* Subtle Ambient Glow */}
+        <div className="absolute top-1/4 start-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-[#C5A059]/5 blur-[140px] rounded-full pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-8">
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-semibold shadow-[0_0_20px_rgba(212,175,55,0.2)] animate-pulse">
-            <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#C5A059]/10 border border-[#C5A059]/30 text-[#DFCA9B] text-xs font-semibold shadow-sm">
+            <Sparkles className="w-3.5 h-3.5 text-[#C5A059]" />
             <span>{t.hero.badge}</span>
           </div>
 
@@ -200,9 +199,8 @@ export default function HomePage() {
 
           {/* Search Bar */}
           <div className="max-w-2xl mx-auto relative group">
-            <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-[#C5A059] to-[#9E7D3B] opacity-20 group-hover:opacity-30 blur transition duration-300" />
-            <div className="relative flex items-center rounded-2xl bg-zinc-950 border border-[#C5A059]/40 p-2 shadow-2xl">
-              <Search className="w-5 h-5 text-amber-400 ms-3 shrink-0" />
+            <div className="relative flex items-center rounded-2xl bg-zinc-950/90 border border-white/[0.1] focus-within:border-[#C5A059] p-2 shadow-xl transition-all">
+              <Search className="w-5 h-5 text-[#C5A059] ms-3 shrink-0" />
               <input
                 type="text"
                 value={searchQuery}
@@ -212,7 +210,7 @@ export default function HomePage() {
               />
               <button
                 type="button"
-                className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#C5A059] to-[#9E7D3B] text-zinc-950 text-xs font-black shadow-md hover:brightness-105 transition-all shrink-0"
+                className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#C5A059] to-[#9E7D3B] text-zinc-950 text-xs font-bold shadow-sm hover:brightness-105 transition-all shrink-0"
               >
                 بحث
               </button>
@@ -223,14 +221,14 @@ export default function HomePage() {
           <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
             <Link
               href="/services"
-              className="px-7 py-3 rounded-xl bg-gradient-to-r from-[#C5A059] to-[#9E7D3B] text-zinc-950 font-black text-sm shadow-[0_4px_20px_rgba(197,160,89,0.2)] hover:brightness-105 transition-all flex items-center gap-2"
+              className="px-7 py-3 rounded-xl bg-gradient-to-r from-[#C5A059] to-[#9E7D3B] text-zinc-950 font-bold text-sm shadow-[0_4px_20px_rgba(197,160,89,0.2)] hover:brightness-105 transition-all flex items-center gap-2"
             >
               <span>{t.hero.ctaServices}</span>
               <Arrow className="w-4 h-4" />
             </Link>
             <Link
               href="/dashboard/top-up"
-              className="px-7 py-3 rounded-xl bg-zinc-900 border border-[#C5A059]/30 hover:border-[#C5A059] text-amber-300 font-bold text-sm hover:bg-zinc-800 transition-all shadow-sm"
+              className="px-7 py-3 rounded-xl bg-zinc-900/90 border border-white/[0.1] hover:border-[#C5A059]/50 text-[#DFCA9B] font-bold text-sm hover:bg-zinc-800 transition-all shadow-sm"
             >
               {t.hero.ctaTopUp}
             </Link>
@@ -238,20 +236,20 @@ export default function HomePage() {
 
           {/* Key Stats Bar */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto pt-10">
-            <div className="p-4 rounded-2xl bg-zinc-900/60 border border-amber-500/20 backdrop-blur-sm">
-              <div className="text-2xl font-black text-amber-300">48,290+</div>
+            <div className="card-matte p-4 rounded-2xl">
+              <div className="text-2xl font-black text-[#DFCA9B]">48,290+</div>
               <div className="text-xs text-zinc-400 mt-1">{t.hero.statsOrders}</div>
             </div>
-            <div className="p-4 rounded-2xl bg-zinc-900/60 border border-amber-500/20 backdrop-blur-sm">
-              <div className="text-2xl font-black text-amber-300">99.4%</div>
+            <div className="card-matte p-4 rounded-2xl">
+              <div className="text-2xl font-black text-[#DFCA9B]">99.4%</div>
               <div className="text-xs text-zinc-400 mt-1">{t.hero.statsSuccess}</div>
             </div>
-            <div className="p-4 rounded-2xl bg-zinc-900/60 border border-amber-500/20 backdrop-blur-sm">
-              <div className="text-2xl font-black text-amber-300">Instant API</div>
+            <div className="card-matte p-4 rounded-2xl">
+              <div className="text-2xl font-black text-[#DFCA9B]">Instant API</div>
               <div className="text-xs text-zinc-400 mt-1">سيرفرات معالجة فورية مؤتمتة</div>
             </div>
-            <div className="p-4 rounded-2xl bg-zinc-900/60 border border-amber-500/20 backdrop-blur-sm">
-              <div className="text-2xl font-black text-amber-300">24 / 7</div>
+            <div className="card-matte p-4 rounded-2xl">
+              <div className="text-2xl font-black text-[#DFCA9B]">24 / 7</div>
               <div className="text-xs text-zinc-400 mt-1">{t.hero.statsSupport}</div>
             </div>
           </div>
@@ -262,7 +260,7 @@ export default function HomePage() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
           <div>
-            <span className="text-xs font-bold text-amber-400 uppercase tracking-widest block mb-1">
+            <span className="text-xs font-bold text-[#C5A059] uppercase tracking-widest block mb-1">
               {t.categoriesSection.subtitle}
             </span>
             <h2 className="text-2xl sm:text-3xl font-black text-white">
@@ -271,7 +269,7 @@ export default function HomePage() {
           </div>
           <Link
             href="/services"
-            className="inline-flex items-center gap-1.5 text-xs font-bold text-amber-400 hover:text-amber-300 transition-colors"
+            className="inline-flex items-center gap-1.5 text-xs font-bold text-[#C5A059] hover:text-[#DFCA9B] transition-colors"
           >
             <span>{t.categoriesSection.viewAll}</span>
             <Arrow className="w-3.5 h-3.5" />
@@ -285,13 +283,13 @@ export default function HomePage() {
               <Link
                 key={cat.id}
                 href={`/services?category=${cat.slug}`}
-                className="group relative p-6 rounded-2xl bg-zinc-950/80 border border-amber-500/20 hover:border-amber-400/60 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_35px_rgba(212,175,55,0.15)] flex flex-col justify-between"
+                className="card-matte group relative p-6 rounded-2xl hover:border-[#C5A059]/40 transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between"
               >
                 <div>
-                  <div className="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 mb-4 group-hover:scale-110 group-hover:bg-amber-500/20 transition-all">
+                  <div className="w-12 h-12 rounded-xl bg-[#C5A059]/10 border border-[#C5A059]/20 flex items-center justify-center text-[#DFCA9B] mb-4 group-hover:scale-105 group-hover:bg-[#C5A059]/20 transition-all">
                     <Icon className="w-6 h-6" />
                   </div>
-                  <h3 className="text-lg font-bold text-white group-hover:text-amber-300 transition-colors">
+                  <h3 className="text-base font-bold text-white group-hover:text-[#DFCA9B] transition-colors">
                     {cat.title}
                   </h3>
                   <p className="text-xs text-zinc-400 mt-2 leading-relaxed">
@@ -299,10 +297,10 @@ export default function HomePage() {
                   </p>
                 </div>
                 <div className="mt-6 pt-4 border-t border-zinc-900 flex items-center justify-between text-xs">
-                  <span className="text-amber-400/80 font-semibold">
+                  <span className="text-[#C5A059] font-semibold">
                     {cat.servicesCount} خدمة نشطة
                   </span>
-                  <span className="flex items-center gap-1 text-zinc-400 group-hover:text-amber-300 font-semibold transition-colors">
+                  <span className="flex items-center gap-1 text-zinc-400 group-hover:text-[#DFCA9B] font-semibold transition-colors">
                     <span>تصفح</span>
                     <Arrow className="w-3.5 h-3.5" />
                   </span>
@@ -316,7 +314,7 @@ export default function HomePage() {
       {/* 3. POPULAR SERVICES WITH INSTANT ORDER */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-12 space-y-2">
-          <span className="text-xs font-bold text-amber-400 uppercase tracking-widest block">
+          <span className="text-xs font-bold text-[#C5A059] uppercase tracking-widest block">
             {t.popularSection.instantDelivery}
           </span>
           <h2 className="text-2xl sm:text-3xl font-black text-white">
@@ -333,7 +331,7 @@ export default function HomePage() {
             return (
               <div
                 key={service.id}
-                className="relative rounded-2xl bg-zinc-950/90 border border-amber-500/25 p-5 flex flex-col justify-between shadow-[0_4px_25px_rgba(0,0,0,0.5)] hover:border-amber-400/50 transition-all hover:shadow-[0_8px_30px_rgba(212,175,55,0.15)]"
+                className="card-matte relative rounded-2xl p-5 flex flex-col justify-between hover:border-[#C5A059]/40 transition-all"
               >
                 <div>
                   <div className="flex items-center justify-between gap-2 mb-3">
@@ -355,16 +353,16 @@ export default function HomePage() {
                   )}
                 </div>
 
-                <div className="mt-5 pt-4 border-t border-zinc-900/90 flex items-center justify-between gap-3">
+                <div className="mt-5 pt-4 border-t border-zinc-900 flex items-center justify-between gap-3">
                   <div>
                     <span className="text-[11px] text-zinc-400 block">السعر:</span>
-                    <span className="text-lg font-black text-amber-300">
+                    <span className="text-lg font-black text-[#DFCA9B]">
                       {formatPrice(service.price)}
                     </span>
                   </div>
                   <button
                     onClick={() => setSelectedService(service)}
-                    className="px-4 py-2 rounded-xl bg-gradient-to-r from-[#C5A059] to-[#9E7D3B] text-zinc-950 text-xs font-bold shadow-md hover:brightness-105 transition-all flex items-center gap-1.5"
+                    className="px-4 py-2 rounded-xl bg-gradient-to-r from-[#C5A059] to-[#9E7D3B] text-zinc-950 text-xs font-bold shadow-sm hover:brightness-105 transition-all flex items-center gap-1.5"
                   >
                     <Zap className="w-3.5 h-3.5" />
                     <span>{t.popularSection.orderBtn}</span>
@@ -378,13 +376,13 @@ export default function HomePage() {
 
       {/* 4. VIP MEMBERSHIP TIERS */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="p-8 sm:p-12 rounded-3xl bg-gradient-to-b from-zinc-900 to-zinc-950 border border-amber-500/30 relative overflow-hidden shadow-[0_0_50px_rgba(212,175,55,0.15)]">
-          <div className="absolute top-0 end-0 w-96 h-96 bg-amber-500/10 blur-[100px] pointer-events-none" />
+        <div className="p-8 sm:p-12 rounded-3xl bg-zinc-950/80 border border-white/[0.08] relative overflow-hidden shadow-xl">
+          <div className="absolute top-0 end-0 w-96 h-96 bg-[#C5A059]/5 blur-[120px] pointer-events-none" />
 
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
             <div className="lg:col-span-1 space-y-4">
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 text-xs font-bold border border-amber-500/40">
-                <Award className="w-3.5 h-3.5" />
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#C5A059]/10 text-[#DFCA9B] text-xs font-bold border border-[#C5A059]/30">
+                <Award className="w-3.5 h-3.5 text-[#C5A059]" />
                 <span>اشتراكات كبار الفنيين VIP</span>
               </div>
               <h2 className="text-3xl font-black text-white">
@@ -397,9 +395,9 @@ export default function HomePage() {
 
             <div className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-6">
               {/* Silver Plan */}
-              <div className="p-6 rounded-2xl bg-zinc-950 border border-zinc-800 space-y-4">
+              <div className="p-6 rounded-2xl bg-zinc-900/60 border border-white/[0.06] space-y-4">
                 <h4 className="text-base font-bold text-zinc-200">الباقة الفضية (شهر)</h4>
-                <div className="text-3xl font-black text-amber-300">
+                <div className="text-3xl font-black text-[#DFCA9B]">
                   {formatPrice(15.00)} <span className="text-xs font-normal text-zinc-400">/ 30 يوم</span>
                 </div>
                 <ul className="text-xs text-zinc-400 space-y-2">
@@ -425,31 +423,31 @@ export default function HomePage() {
               </div>
 
               {/* Royal Gold Plan */}
-              <div className="relative p-6 rounded-2xl bg-zinc-950 border-2 border-amber-400 space-y-4 shadow-[0_0_30px_rgba(212,175,55,0.25)]">
-                <div className="absolute -top-3 end-4 px-2.5 py-0.5 rounded-full bg-amber-400 text-zinc-950 text-[10px] font-black uppercase tracking-wider">
+              <div className="relative p-6 rounded-2xl bg-zinc-900/90 border border-[#C5A059]/60 space-y-4 shadow-[0_0_30px_rgba(197,160,89,0.15)]">
+                <div className="absolute -top-3 end-4 px-2.5 py-0.5 rounded-full bg-gradient-to-r from-[#C5A059] to-[#9E7D3B] text-zinc-950 text-[10px] font-black uppercase tracking-wider">
                   الأكثر توفيراً
                 </div>
-                <h4 className="text-base font-bold text-amber-300">الباقة الملكية السنوية</h4>
-                <div className="text-3xl font-black text-amber-300">
+                <h4 className="text-base font-bold text-[#DFCA9B]">الباقة الملكية السنوية</h4>
+                <div className="text-3xl font-black text-[#DFCA9B]">
                   {formatPrice(99.00)} <span className="text-xs font-normal text-zinc-400">/ سنة كاملة</span>
                 </div>
                 <ul className="text-xs text-zinc-300 space-y-2">
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-amber-400 shrink-0" />
+                    <CheckCircle className="w-4 h-4 text-[#C5A059] shrink-0" />
                     <span>تحميل لا محدود لجميع الفلاشات والدامب</span>
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-amber-400 shrink-0" />
+                    <CheckCircle className="w-4 h-4 text-[#C5A059] shrink-0" />
                     <span>أولوية قصوى لتنفيذ طلبات السيرفر</span>
                   </li>
                   <li className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-amber-400 shrink-0" />
+                    <CheckCircle className="w-4 h-4 text-[#C5A059] shrink-0" />
                     <span>طلب فلاشات مخصصة غير متوفرة بالسوق</span>
                   </li>
                 </ul>
                 <Link
                   href="/dashboard/top-up"
-                  className="block text-center py-2.5 rounded-xl bg-gradient-to-r from-[#C5A059] to-[#9E7D3B] text-zinc-950 text-xs font-black shadow-md hover:brightness-105 transition-all"
+                  className="block text-center py-2.5 rounded-xl bg-gradient-to-r from-[#C5A059] to-[#9E7D3B] text-zinc-950 text-xs font-bold shadow-md hover:brightness-105 transition-all"
                 >
                   اشتراك ملكي VIP
                 </Link>
