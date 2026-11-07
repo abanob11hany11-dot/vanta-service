@@ -1,7 +1,7 @@
 // Vanta Services - Runnable Self-Check (Assert-based, no external framework)
 import assert from "node:assert";
-import { validateImei, validatePlayerId, validateAmount } from "../lib/validator.ts";
-import { translations } from "../lib/i18n.ts";
+import { validateImei, validatePlayerId, validateAmount } from "../lib/validator";
+import { translations } from "../lib/i18n";
 
 async function runSelfCheck() {
   console.log("Starting Vanta Services Self-Check...");

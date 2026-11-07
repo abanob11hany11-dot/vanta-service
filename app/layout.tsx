@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Cairo, Inter } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/components/LanguageContext";
@@ -18,11 +18,14 @@ const inter = Inter({
   display: "swap",
 });
 
+export const viewport: Viewport = {
+  themeColor: "#d4af37",
+};
+
 export const metadata: Metadata = {
   title: "Vanta Services | سيرفر خدمات السوفت وير وبرمجة الهواتف",
   description:
     "المنصة الاحترافية الأولى لخدمات الـ GSM، تخطي حسابات جوجل FRP، تفعيل واشتراكات البوكسات، شحن الألعاب، وفحص السيريال الرسمي عبر سيرفر DHRU الفوري.",
-  themeColor: "#d4af37",
   icons: {
     icon: "/favicon.ico",
   },
